@@ -18,8 +18,8 @@ public class SwaggerConfig {
 
     private Info apiInfo() {
         return new Info()
-                .title("Spring Boot REST API Specifications")
-                .description("Specifications")
+                .title("Butter-Salt-Flour API")
+                .description("DND 해커톤 팀 버터와 소금과 밀가루 프로젝트 API 문서입니다.")
                 .version("1.0.0");
     }
 }
