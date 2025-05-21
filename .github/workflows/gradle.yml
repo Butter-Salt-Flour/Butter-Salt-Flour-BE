@@ -33,9 +33,14 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            pid=$(pgrep -f SNAPSHOT.jar) && kill -9 "$pid" || echo "No matching process"
+            pid=$(pgrep -f SNAPSHOT.jar)
+            if [ -n "$pid" ]; then
+              echo "Killing PID $pid"
+              kill -9 "$pid" >/dev/null 2>&1 || true
+            else
+              echo "No matching process"
+            fi
             rm -f ~/app/*SNAPSHOT.jar || true
-            exit 0
 
       - name: Copy to EC2
         uses: appleboy/scp-action@v0.1.4
