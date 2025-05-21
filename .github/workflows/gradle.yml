@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            pkill -f SNAPSHOT.jar || true
+            pid=$(pgrep -f SNAPSHOT.jar) && kill -9 "$pid" || echo "No matching process"
             rm -f ~/app/*SNAPSHOT.jar || true
 
       - name: Copy to EC2
