@@ -1,14 +1,22 @@
 spring:
+
   application:
     name: Butter-Salt-Flour-BE
+
   datasource:
-    url: jdbc:postgresql://aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres
-    username: postgres.fsiqzzipdabcjqouqkzq
-    password: dndgozjxhsrkwk!
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://butter-salt-flour-db.cx26qu62uqec.ap-northeast-2.rds.amazonaws.com:3306/SaltBread
+    username: admin
+    password: saltbread01^^
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     hibernate:
       ddl-auto: create
     properties:
-      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
+
+server:
+  port: 8080
+
