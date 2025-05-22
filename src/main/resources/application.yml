@@ -8,3 +8,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+gemini:
+  service:
+    endpoint: ${GEMINAI_ENDPOINT}
+    apikey: ${GEMINAI_APIKEY}
