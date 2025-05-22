@@ -27,16 +27,15 @@ public class FirebaseAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
+
                                     FilterChain filterChain) throws ServletException, IOException {
         log.info(">>> FirebaseAuthFilter 동작 시작");
         String header = request.getHeader("Authorization");
 
-        if (header == null) {
-            throw new FirebaseAuthHeaderMissingException();
-        }
-
-        if (!header.startsWith("Bearer ")) {
-            throw new FirebaseAuthInvalidFormatException();
+        if (header == null || !header.startsWith("Bearer ")) {
+            log.info(">>> Authorization 헤더가 없거나 형식이 잘못됨 → 필터 패스");
+            filterChain.doFilter(request, response);
+            return;
         }
 
         String token = header.substring(7);
