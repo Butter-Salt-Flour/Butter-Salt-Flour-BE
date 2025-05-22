@@ -24,15 +24,7 @@ public class MemberController {
 
     @GetMapping("/api/protected")
     public ResponseEntity<String> protectedEndpoint() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication == null || !(authentication.getPrincipal() instanceof FirebaseToken)) {
-            return ResponseEntity.status(401).body("인증 실패 또는 FirebaseToken 없음");
-        }
-
-        FirebaseToken token = (FirebaseToken) authentication.getPrincipal();
-        service.saveIfNew();
-        return ResponseEntity.ok("login success: " + token.getEmail());
+        String resultMessage = service.saveIfNew(); // 비즈니스 로직 위임
+        return ResponseEntity.ok(resultMessage);
     }
 }
-
