@@ -17,6 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import practice.buttersaltflour.filter.exception.FirebaseAuthFailureException;
 import practice.buttersaltflour.filter.exception.FirebaseAuthHeaderMissingException;
 import practice.buttersaltflour.filter.exception.FirebaseAuthInvalidFormatException;
+import practice.buttersaltflour.auth.entity.CustomPrincipal;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,7 +30,14 @@ public class FirebaseAuthFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
 
                                     FilterChain filterChain) throws ServletException, IOException {
-        log.info(">>> FirebaseAuthFilter 동작 시작");
+        String path = request.getRequestURI();
+        if (path.startsWith("/swagger-ui")
+                || path.startsWith("/v3/api-docs")
+                || path.equals("/v3/api-docs.yaml")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String header = request.getHeader("Authorization");
 
         if (header == null || !header.startsWith("Bearer ")) {
@@ -42,11 +50,19 @@ public class FirebaseAuthFilter extends OncePerRequestFilter {
         try {
             FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(token);
             String uid = decodedToken.getUid();
+            String email = decodedToken.getEmail();
+            String displayName = decodedToken.getName();
+
             log.info(">>> 인증 성공: " + uid);
 
+            // ✅ CustomPrincipal 생성
+            CustomPrincipal principal = new CustomPrincipal(uid, email, displayName);
+
+            // ✅ 권한 설정
             List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_USER"));
 
-            Authentication auth = new UsernamePasswordAuthenticationToken(decodedToken, null, authorities);
+            // ✅ SecurityContext에 등록
+            Authentication auth = new UsernamePasswordAuthenticationToken(principal, null, authorities);
             SecurityContextHolder.getContext().setAuthentication(auth);
 
         } catch (FirebaseAuthException e) {
