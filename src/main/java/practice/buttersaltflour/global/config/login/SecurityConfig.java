@@ -1,4 +1,4 @@
-package practice.buttersaltflour.config.login;
+package practice.buttersaltflour.global.config.login;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
