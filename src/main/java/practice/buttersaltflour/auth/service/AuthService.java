@@ -6,7 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import practice.buttersaltflour.member.controller.dto.CustomPrincipal;
+import practice.buttersaltflour.auth.entity.CustomPrincipal;
 import practice.buttersaltflour.member.entity.Member;
 import practice.buttersaltflour.member.exception.AuthContextMissingException;
 import practice.buttersaltflour.member.exception.InvalidTokenTypeException;

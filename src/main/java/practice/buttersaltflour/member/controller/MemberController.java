@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import practice.buttersaltflour.member.controller.dto.CustomPrincipal;
+import practice.buttersaltflour.auth.entity.CustomPrincipal;
 import practice.buttersaltflour.member.controller.dto.MemberResponse;
 import practice.buttersaltflour.member.service.MemberService;
 

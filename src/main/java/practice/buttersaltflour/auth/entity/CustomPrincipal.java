@@ -1,4 +1,4 @@
-package practice.buttersaltflour.member.controller.dto;
+package practice.buttersaltflour.auth.entity;
 
 import lombok.Getter;
 
