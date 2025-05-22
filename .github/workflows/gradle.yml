@@ -19,6 +19,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
 
       - name: Build JAR
         run: ./gradlew clean build -x test
@@ -30,7 +33,13 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            pkill -f SNAPSHOT.jar || true
+            pid=$(pgrep -f SNAPSHOT.jar)
+            if [ -n "$pid" ]; then
+              echo "Killing PID $pid"
+              kill -9 "$pid" >/dev/null 2>&1 || true
+            else
+              echo "No matching process"
+            fi
             rm -f ~/app/*SNAPSHOT.jar || true
 
       - name: Copy to EC2
