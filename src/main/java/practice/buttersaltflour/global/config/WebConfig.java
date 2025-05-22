@@ -1,4 +1,4 @@
-package practice.buttersaltflour.config;
+package practice.buttersaltflour.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
