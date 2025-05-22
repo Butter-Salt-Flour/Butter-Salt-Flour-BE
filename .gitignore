@@ -13,9 +13,11 @@ build/
 .settings
 .springBeans
 .sts4-cache
+*.json
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+
 
 ### IntelliJ IDEA ###
 .idea

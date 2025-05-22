@@ -1,13 +1,26 @@
 spring:
+
   application:
     name: Butter-Salt-Flour-BE
+
   datasource:
-    url: jdbc:postgresql://db.fsiqzzipdabcjqouqkzq.supabase.co:5432/postgres
-    username: postgres
-    password: secret
+    url: jdbc:mysql://butter-salt-flour-db.cx26qu62uqec.ap-northeast-2.rds.amazonaws.com:3306/SaltBread
+    username: admin
+    password: saltbread01^^
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     hibernate:
       ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+
+server:
+  port: 8080
+
+
 gemini:
   service:
     endpoint: ${GEMINAI_ENDPOINT}
