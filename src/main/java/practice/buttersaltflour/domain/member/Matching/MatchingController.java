@@ -1,13 +1,12 @@
-package practice.buttersaltflour.member.controller;
+package practice.buttersaltflour.domain.member.Matching;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import practice.buttersaltflour.member.controller.dto.MatchingRequestDto;
-import practice.buttersaltflour.member.controller.dto.MatchingResponseDto;
-import practice.buttersaltflour.member.service.MatchingService;
+import practice.buttersaltflour.domain.member.Matching.DTO.MatchingRequestDto;
+import practice.buttersaltflour.domain.member.Matching.DTO.MatchingResponseDto;
 
 @RestController
 @RequiredArgsConstructor

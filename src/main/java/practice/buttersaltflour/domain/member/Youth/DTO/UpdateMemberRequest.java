@@ -1,4 +1,4 @@
-package practice.buttersaltflour.domain.member.controller.dto;
+package practice.buttersaltflour.domain.member.Youth.DTO;
 
 import lombok.Getter;
 

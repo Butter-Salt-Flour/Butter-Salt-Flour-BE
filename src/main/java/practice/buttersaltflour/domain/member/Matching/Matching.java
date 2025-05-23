@@ -1,10 +1,12 @@
-package practice.buttersaltflour.domain.member.entity;
+package practice.buttersaltflour.domain.member.Matching;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import practice.buttersaltflour.domain.bingoboard.domain.BingoBoard;
-import practice.buttersaltflour.domain.member.entity.enumList.MatchStatus;
+import practice.buttersaltflour.domain.member.Senior.Senior;
+import practice.buttersaltflour.domain.member.Youth.Youth;
+import practice.buttersaltflour.domain.member.enumList.MatchStatus;
 
 import java.time.LocalDateTime;
 

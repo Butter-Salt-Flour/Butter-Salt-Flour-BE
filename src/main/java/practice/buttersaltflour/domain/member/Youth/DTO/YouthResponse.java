@@ -1,8 +1,8 @@
-package practice.buttersaltflour.domain.member.controller.dto;
+package practice.buttersaltflour.domain.member.Youth.DTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
-import practice.buttersaltflour.domain.member.entity.Youth;
+import practice.buttersaltflour.domain.member.Youth.Youth;
 
 @Getter
 public class YouthResponse {

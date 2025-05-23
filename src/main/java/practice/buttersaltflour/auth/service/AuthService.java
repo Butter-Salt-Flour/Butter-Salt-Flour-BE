@@ -12,9 +12,9 @@ import practice.buttersaltflour.auth.model.CustomPrincipal;
 import practice.buttersaltflour.auth.exception.AuthContextMissingException;
 import practice.buttersaltflour.auth.exception.InvalidTokenTypeException;
 import practice.buttersaltflour.auth.exception.MissingUidException;
-import practice.buttersaltflour.domain.member.entity.Youth;
+import practice.buttersaltflour.domain.member.Youth.Youth;
 import practice.buttersaltflour.domain.member.exception.MemberException;
-import practice.buttersaltflour.domain.member.repository.YouthRepository;
+import practice.buttersaltflour.domain.member.Youth.YouthRepository;
 import util.execption.ErrorCode;
 
 import java.util.Optional;

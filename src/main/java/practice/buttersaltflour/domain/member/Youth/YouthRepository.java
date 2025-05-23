@@ -1,7 +1,6 @@
-package practice.buttersaltflour.domain.member.repository;
+package practice.buttersaltflour.domain.member.Youth;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import practice.buttersaltflour.domain.member.entity.Youth;
 
 import java.util.Optional;
 

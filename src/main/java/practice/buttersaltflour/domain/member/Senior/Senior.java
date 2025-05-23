@@ -1,8 +1,9 @@
-package practice.buttersaltflour.domain.member.entity;
+package practice.buttersaltflour.domain.member.Senior;
 
 import jakarta.persistence.*;
 import lombok.*;
-import practice.buttersaltflour.domain.member.entity.enumList.Gender;
+import practice.buttersaltflour.domain.member.Matching.Matching;
+import practice.buttersaltflour.domain.member.enumList.Gender;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package practice.buttersaltflour.member.controller.dto;
+package practice.buttersaltflour.domain.member.Matching.DTO;
 
 import lombok.Builder;
 import lombok.Data;
