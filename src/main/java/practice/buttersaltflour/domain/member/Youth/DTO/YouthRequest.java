@@ -1,7 +1,7 @@
-package practice.buttersaltflour.domain.member.controller.dto;
+package practice.buttersaltflour.domain.member.Youth.DTO;
 
-import practice.buttersaltflour.domain.member.entity.Youth;
-import practice.buttersaltflour.domain.member.entity.enumList.Gender;
+import practice.buttersaltflour.domain.member.Youth.Youth;
+import practice.buttersaltflour.domain.member.enumList.Gender;
 
 public class YouthRequest {
 

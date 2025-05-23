@@ -1,4 +1,4 @@
-package practice.buttersaltflour.domain.member.controller;
+package practice.buttersaltflour.domain.member.Youth;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import practice.buttersaltflour.auth.model.CustomPrincipal;
-import practice.buttersaltflour.domain.member.controller.dto.YouthResponse;
-import practice.buttersaltflour.domain.member.service.YouthService;
+import practice.buttersaltflour.domain.member.Youth.DTO.YouthResponse;
 
 @RestController
 @RequiredArgsConstructor

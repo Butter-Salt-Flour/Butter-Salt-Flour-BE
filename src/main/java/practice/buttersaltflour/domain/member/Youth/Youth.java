@@ -1,4 +1,4 @@
-package practice.buttersaltflour.domain.member.entity;
+package practice.buttersaltflour.domain.member.Youth;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import practice.buttersaltflour.domain.badge.entity.Badge;
-import practice.buttersaltflour.domain.member.entity.enumList.Gender;
+import practice.buttersaltflour.domain.member.enumList.Gender;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity

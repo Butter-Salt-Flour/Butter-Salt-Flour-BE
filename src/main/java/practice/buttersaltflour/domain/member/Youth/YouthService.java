@@ -1,13 +1,11 @@
-package practice.buttersaltflour.domain.member.service;
+package practice.buttersaltflour.domain.member.Youth;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import practice.buttersaltflour.domain.member.controller.dto.YouthResponse;
-import practice.buttersaltflour.domain.member.entity.Youth;
+import practice.buttersaltflour.domain.member.Youth.DTO.YouthResponse;
 import practice.buttersaltflour.domain.member.exception.MemberException;
-import practice.buttersaltflour.domain.member.repository.YouthRepository;
 import util.execption.ErrorCode;
 
 @Slf4j
