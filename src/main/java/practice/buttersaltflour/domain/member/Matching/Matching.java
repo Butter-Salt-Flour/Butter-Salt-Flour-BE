@@ -32,6 +32,8 @@ public class Matching {
 
     private LocalDateTime matchedAt;
 
+    private int BingoCount;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "senior_id")
     private Senior senior;
