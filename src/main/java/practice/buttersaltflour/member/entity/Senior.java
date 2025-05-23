@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import practice.buttersaltflour.member.entity.enumList.Gender;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -13,6 +15,7 @@ import practice.buttersaltflour.member.entity.enumList.Gender;
 public class Senior {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "senior_id")
     private Long seniorId;
 
     private String name;
@@ -29,9 +32,8 @@ public class Senior {
     private String profileImage;
 
     @Column(length = 1000)
-    private String description; // 한줄 소개
+    private String description;
 
-    // 💡 매칭 리스트 (1:N)
     @OneToMany(mappedBy = "senior", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Matching> matchings;
 

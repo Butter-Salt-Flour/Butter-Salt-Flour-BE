@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 public class Matching {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "matched_id")
     private Long matchId;
 
     @Enumerated(EnumType.STRING)
