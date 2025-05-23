@@ -40,9 +40,8 @@ public class Matching {
     @JoinColumn(name = "youth_id")
     private Youth youth;
 
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bingoboard_id", nullable = false, unique = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bingoboard_id")
     private BingoBoard bingoBoard;
 
 }
