@@ -54,7 +54,7 @@ public class FirebaseAuthFilter extends OncePerRequestFilter {
             log.info(">>> 인증 성공: " + uid);
 
             // ✅ CustomPrincipal 생성
-            CustomPrincipal principal = new CustomPrincipal(uid, email, displayName);
+            CustomPrincipal principal = new CustomPrincipal(uid);
 
             // ✅ 권한 설정
             List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_USER"));

@@ -9,11 +9,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import practice.buttersaltflour.auth.model.CustomPrincipal;
-import practice.buttersaltflour.auth.service.AuthService;
-import practice.buttersaltflour.domain.member.controller.dto.MemberResponse;
-import practice.buttersaltflour.domain.member.controller.dto.UpdateMemberRequest;
+import practice.buttersaltflour.domain.member.controller.dto.YouthResponse;
 import practice.buttersaltflour.domain.member.service.YouthService;
 
 @RestController
@@ -23,32 +24,18 @@ import practice.buttersaltflour.domain.member.service.YouthService;
 public class YouthController {
 
     private final YouthService service;
-    private final AuthService authService;
-
-
 
     @Operation(summary = "본인 정보 요청 API")
     @ApiResponse(responseCode = "200", description = "로그인한 본인 정보 조회 성공",
-            content = @Content(schema = @Schema(implementation = MemberResponse.class)))
+            content = @Content(schema = @Schema(implementation = YouthResponse.class)))
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/member")
-    public ResponseEntity<MemberResponse> findMember(@AuthenticationPrincipal CustomPrincipal customPrincipal) {
+    public ResponseEntity<YouthResponse> findMember(@AuthenticationPrincipal CustomPrincipal customPrincipal) {
         String uid = customPrincipal.getUid();
-        MemberResponse member = service.findByUid(uid);
+        YouthResponse member = service.findByUid(uid);
         return ResponseEntity.ok(member);
     }
 
-    @PutMapping("/member")
-    @Operation(summary = "본인 정보 수정 요청 API")
-    @ApiResponse(responseCode = "200", description = "본인 정보 수정 요청 성공",
-            content = @Content(schema = @Schema(implementation = MemberResponse.class)))
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<MemberResponse> updateMember(@AuthenticationPrincipal CustomPrincipal customPrincipal,
-                                                       @RequestBody UpdateMemberRequest request) {
-        String uid = customPrincipal.getUid();
-        MemberResponse member = service.updateByUid(uid, request);
-        return ResponseEntity.ok(member);
-    }
 
 
 }
