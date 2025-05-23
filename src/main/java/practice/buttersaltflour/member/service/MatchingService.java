@@ -32,13 +32,13 @@ public class MatchingService {
         Youth youth = youthRepository.findById(request.getYouthId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 청년입니다."));
 
-        boolean alreadyMatched = matchingRepository.existsByYouthIdAndStatusIn(
+        boolean alreadyMatched = matchingRepository.existsByYouth_YouthIdAndIsMatchedIn(
                 youth.getYouthId(), List.of(MatchStatus.PENDING, MatchStatus.APPROVED));
         if (alreadyMatched) {
             throw new IllegalStateException("청년은 이미 매칭된 상태입니다.");
         }
 
-        long currentMatchingCount = matchingRepository.countBySeniorIdAndStatusIn(
+        long currentMatchingCount = matchingRepository.countBySenior_SeniorIdAndIsMatchedIn(
                 senior.getSeniorId(), List.of(MatchStatus.PENDING, MatchStatus.APPROVED));
         if (currentMatchingCount >= 3) {
             throw new IllegalStateException("해당 할머니는 이미 3명과 매칭되어 있습니다.");

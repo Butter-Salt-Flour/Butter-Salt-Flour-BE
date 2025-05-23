@@ -32,7 +32,7 @@ public class BingoBoard {
     private int level;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "bingoboard", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "bingoBoard", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Quest> quests = new ArrayList<>();
 
     @JsonIgnore

@@ -8,6 +8,6 @@ import practice.buttersaltflour.domain.member.entity.enumList.MatchStatus;
 import java.util.List;
 
 public interface MatchingRepository extends JpaRepository<Matching, Long> {
-    boolean existsByYouthIdAndStatusIn(Long youthId, List<MatchStatus> statuses);
-    long countBySeniorIdAndStatusIn(Long seniorId, List<MatchStatus> statuses);
+    boolean existsByYouth_YouthIdAndIsMatchedIn(Long youthId, List<MatchStatus> statuses);
+    long countBySenior_SeniorIdAndIsMatchedIn(Long seniorId, List<MatchStatus> statusList);
 }
