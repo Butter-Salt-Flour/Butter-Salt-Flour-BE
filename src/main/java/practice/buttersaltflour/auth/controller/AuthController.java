@@ -40,6 +40,17 @@ public class AuthController {
         return ResponseEntity.ok(resultMessage);
     }
 
+    @Operation(summary = "회원 탈퇴 요청",
+            description = "Firebase 계정과 내부 DB의 회원 정보를 삭제합니다.")
+    @ApiResponse(responseCode = "200", description = "회원 탈퇴 성공",
+            content = @Content(
+                    mediaType = "application/json",
+                    examples = @ExampleObject(
+                            name = "DeleteSuccess",
+                            summary = "정상 탈퇴 응답",
+                            value = "{\"message\": \"delete success: 홍길동\"}"
+                    )))
+    @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/api/auth/delete")
     public ResponseEntity<String> deleteMember(@AuthenticationPrincipal CustomPrincipal customPrincipal) {
         String uid = customPrincipal.getUid();
