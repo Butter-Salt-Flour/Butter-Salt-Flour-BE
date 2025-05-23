@@ -1,8 +1,10 @@
-package practice.buttersaltflour.domain.quest.domain;
+package practice.buttersaltflour.domain.bingo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -12,7 +14,6 @@ import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import practice.buttersaltflour.domain.bingoboard.domain.BingoBoard;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -28,10 +29,14 @@ public class Quest {
     private String description;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private MissionType level;
 
     @Column(nullable = false)
     private boolean completed;
+
+    @Column(nullable = false)
+    private int questOrder;
 
     private LocalDateTime completedAt;
 

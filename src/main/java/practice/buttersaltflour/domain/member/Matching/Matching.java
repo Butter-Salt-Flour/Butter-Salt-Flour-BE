@@ -2,8 +2,13 @@ package practice.buttersaltflour.domain.member.Matching;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
-import practice.buttersaltflour.domain.bingoboard.domain.BingoBoard;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import practice.buttersaltflour.domain.bingo.domain.BingoBoard;
 import practice.buttersaltflour.domain.member.Senior.Senior;
 import practice.buttersaltflour.domain.member.Youth.Youth;
 import practice.buttersaltflour.domain.member.enumList.MatchStatus;

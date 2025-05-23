@@ -21,6 +21,10 @@ public class YouthService {
         return YouthResponse.from(member);
     }
 
+    public Youth getByUid(String uid) {
+        Youth member = repository.findByUid(uid).orElseThrow(() -> new MemberException(ErrorCode.MEMBER_NOT_FOUND));
+        return member;
+    }
 
     public String deleteByUid(String uid) {
         Youth member = repository.findByUid(uid).orElseThrow(() ->  new MemberException(ErrorCode.MEMBER_NOT_FOUND));
