@@ -16,7 +16,7 @@ public class BingoBoardService {
     private final BingoBoardRepository bingoBoardRepository;
 
     public BingoBoardResponse findByMatching(Matching matching) {
-        BingoBoard bingoBoard = bingoBoardRepository.findByMatching(matching);
+        BingoBoard bingoBoard = bingoBoardRepository.findByMatchingsContaining(matching);
         return BingoBoardResponse.from(bingoBoard);
     }
 }

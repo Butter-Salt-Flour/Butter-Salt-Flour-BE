@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,17 +15,17 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import practice.buttersaltflour.auth.model.CustomPrincipal;
 import practice.buttersaltflour.domain.bingo.controller.response.BingoBoardResponse;
-import practice.buttersaltflour.domain.bingo.domain.BingoBoard;
 import practice.buttersaltflour.domain.bingo.service.BingoBoardService;
-import practice.buttersaltflour.domain.member.controller.dto.MemberResponse;
+import practice.buttersaltflour.domain.member.controller.dto.YouthResponse;
 import practice.buttersaltflour.domain.member.entity.Matching;
 import practice.buttersaltflour.domain.member.service.YouthService;
+import practice.buttersaltflour.member.service.MatchingService;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
 @Tag(name = "Bingo", description = "Bingo API")
-public class BingoController {
+public class BingoBoardController {
 
     private final BingoBoardService bingoBoardService;
     private final YouthService youthService;
@@ -34,13 +33,13 @@ public class BingoController {
 
     @Operation(summary = "빙고판 조회 API")
     @ApiResponse(responseCode = "200", description = "빙고판 조회 성공",
-            content = @Content(schema = @Schema(implementation = MemberResponse.class)))
+            content = @Content(schema = @Schema(implementation = YouthService.class)))
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/bingo")
     public ResponseEntity<BingoBoardResponse> findMember(@AuthenticationPrincipal CustomPrincipal customPrincipal) {
         String uid = customPrincipal.getUid();
-        MemberResponse member = youthService.findByUid(uid);
-        Matching matching = matchingService.findByMember(member);
+        YouthResponse member = youthService.findByUid(uid);
+        Matching matching = matchingService.findByYouth(member);
         BingoBoardResponse bingoBoard = bingoBoardService.findByMatching(matching);
         return ResponseEntity.ok(bingoBoard);
     }

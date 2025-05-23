@@ -34,11 +34,8 @@ public class BingoBoardResponse {
         @Schema(description = "퀘스트 완료 여부", example = "false")
         private final boolean completed;
 
-        @Schema(description = "퀘스트 위치 - 행", example = "1")
-        private final int row;
-
-        @Schema(description = "퀘스트 위치 - 열", example = "2")
-        private final int column;
+        @Schema(description = "퀘스트 위치", example = "1")
+        private final int questOrder;
 
         @Schema(description = "퀘스트 이미지 URL", example = "https://example.com/image.jpg")
         private final String imageUrl;
@@ -59,8 +56,7 @@ public class BingoBoardResponse {
                 .questId(quest.getId())
                 .description(quest.getDescription())
                 .completed(quest.isCompleted())
-                .row(quest.getRow())
-                .column(quest.getColumn())
+                .questOrder(quest.getQuestOrder())
                 .imageUrl(quest.getImageUrl())
                 .build();
     }
