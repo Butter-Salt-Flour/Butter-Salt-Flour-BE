@@ -5,11 +5,11 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import practice.buttersaltflour.domain.badge.entity.Badge;
 import practice.buttersaltflour.domain.member.Youth.DTO.YouthRequest;
 import practice.buttersaltflour.domain.member.enumList.Gender;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -34,7 +34,7 @@ public class Youth {
     private String profileImage;
 
     @OneToMany(mappedBy = "youth", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<YouthBadge> youthBadges = new ArrayList<>();
+    private List<YouthBadge> youthBadges = new ArrayList<>();
 
     @Builder
     public Youth(String uid, String name, Gender gender, String phoneNumber, int age, String profileImage) {
