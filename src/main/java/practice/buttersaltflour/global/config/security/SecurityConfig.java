@@ -23,8 +23,8 @@ public class SecurityConfig {
                             "http://localhost:3000",
                             "https://butter-salt-flour-fe.vercel.app"
                     ));
-                    config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-                    config.setAllowedHeaders(List.of("*"));
+                    config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+                    config.setAllowedHeaders(List.of("*")); // 또는 List.of("Authorization", "Content-Type", ...)
                     config.setAllowCredentials(true); // 인증정보 포함 허용
                     return config;
                 }))
