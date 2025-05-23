@@ -16,7 +16,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import practice.buttersaltflour.domain.member.entity.Matching;
-import practice.buttersaltflour.domain.quest.domain.Quest;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity

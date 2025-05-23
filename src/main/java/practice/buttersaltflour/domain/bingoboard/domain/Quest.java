@@ -1,4 +1,4 @@
-package practice.buttersaltflour.domain.quest.domain;
+package practice.buttersaltflour.domain.bingoboard.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import practice.buttersaltflour.domain.bingoboard.domain.BingoBoard;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
