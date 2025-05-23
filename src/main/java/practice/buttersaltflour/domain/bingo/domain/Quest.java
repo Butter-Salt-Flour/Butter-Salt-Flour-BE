@@ -5,16 +5,18 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
+@Setter
 public class Quest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "quest_id")
     private Long id;
 
@@ -37,7 +39,7 @@ public class Quest {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bingooard_id")
+    @JoinColumn(name = "bingoboard_id")
     private BingoBoard bingoBoard;
 
 }
