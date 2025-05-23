@@ -27,8 +27,10 @@ public class SecurityConfig {
 
                         // 회원가입, 로그인 등 인증 필요 없는 엔드포인트 허용
                         .requestMatchers(
+                                "/api/senior",
                                 "/api/auth/**"
-                        ).permitAll()
+                        )
+                        .permitAll()
 
                         // 그 외는 인증 필요
                         .anyRequest().authenticated()
