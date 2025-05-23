@@ -32,14 +32,17 @@ public class Quest {
     @Enumerated(EnumType.STRING)
     private MissionType level;
 
+    @Setter
     @Column(nullable = false)
     private boolean completed;
 
     @Column(nullable = false)
     private int questOrder;
 
+    @Setter
     private LocalDateTime completedAt;
 
+    @Setter
     private String imageUrl;
 
     @JsonIgnore
