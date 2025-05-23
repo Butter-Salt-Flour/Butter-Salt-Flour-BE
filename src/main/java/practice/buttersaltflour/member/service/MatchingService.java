@@ -3,7 +3,6 @@ package practice.buttersaltflour.member.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import practice.buttersaltflour.domain.member.controller.dto.YouthResponse;
 import practice.buttersaltflour.domain.member.entity.Matching;
 import practice.buttersaltflour.domain.member.entity.Senior;
 import practice.buttersaltflour.domain.member.entity.Youth;
@@ -73,7 +72,7 @@ public class MatchingService {
         matching.setIsMatched(MatchStatus.APPROVED);
     }
 
-    public Matching findByYouth(YouthResponse member) {
+    public Matching findByYouth(Youth member) {
         return matchingRepository.findByYouth(member);
     }
 }

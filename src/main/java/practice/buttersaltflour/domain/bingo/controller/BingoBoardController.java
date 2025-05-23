@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import practice.buttersaltflour.auth.model.CustomPrincipal;
 import practice.buttersaltflour.domain.bingo.controller.response.BingoBoardResponse;
 import practice.buttersaltflour.domain.bingo.service.BingoBoardService;
-import practice.buttersaltflour.domain.member.controller.dto.YouthResponse;
 import practice.buttersaltflour.domain.member.entity.Matching;
+import practice.buttersaltflour.domain.member.entity.Youth;
 import practice.buttersaltflour.domain.member.service.YouthService;
 import practice.buttersaltflour.member.service.MatchingService;
 
@@ -38,7 +38,7 @@ public class BingoBoardController {
     @GetMapping("/bingo")
     public ResponseEntity<BingoBoardResponse> findMember(@AuthenticationPrincipal CustomPrincipal customPrincipal) {
         String uid = customPrincipal.getUid();
-        YouthResponse member = youthService.findByUid(uid);
+        Youth member = youthService.getByUid(uid);
         Matching matching = matchingService.findByYouth(member);
         BingoBoardResponse bingoBoard = bingoBoardService.findByMatching(matching);
         return ResponseEntity.ok(bingoBoard);
