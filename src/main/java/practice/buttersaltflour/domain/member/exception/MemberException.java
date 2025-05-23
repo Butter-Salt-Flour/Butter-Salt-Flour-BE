@@ -1,4 +1,4 @@
-package practice.buttersaltflour.member.exception;
+package practice.buttersaltflour.domain.member.exception;
 
 import util.execption.BusinessBaseException;
 import util.execption.ErrorCode;
