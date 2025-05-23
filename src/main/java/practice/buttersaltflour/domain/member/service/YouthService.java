@@ -8,15 +8,15 @@ import practice.buttersaltflour.domain.member.controller.dto.MemberResponse;
 import practice.buttersaltflour.domain.member.exception.MemberException;
 import practice.buttersaltflour.domain.member.controller.dto.UpdateMemberRequest;
 import practice.buttersaltflour.domain.member.entity.Youth;
-import practice.buttersaltflour.domain.member.repository.MemberRepository;
+import practice.buttersaltflour.domain.member.repository.YouthRepository;
 import util.execption.ErrorCode;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class MemberService {
-    private final MemberRepository repository;
+public class YouthService {
+    private final YouthRepository repository;
 
     public MemberResponse findByUid(String uid) {
         Youth member = repository.findByUid(uid).orElseThrow(() -> new MemberException(ErrorCode.MEMBER_NOT_FOUND));
@@ -25,7 +25,6 @@ public class MemberService {
 
     public MemberResponse updateByUid(String uid, UpdateMemberRequest request) {
         Youth member = repository.findByUid(uid).orElseThrow(() -> new MemberException(ErrorCode.MEMBER_NOT_FOUND));
-        member.update(request);
         return MemberResponse.from(member);
     }
 

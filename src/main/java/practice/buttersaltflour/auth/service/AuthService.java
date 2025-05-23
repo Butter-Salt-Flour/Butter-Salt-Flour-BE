@@ -14,7 +14,7 @@ import practice.buttersaltflour.auth.exception.InvalidTokenTypeException;
 import practice.buttersaltflour.auth.exception.MissingUidException;
 import practice.buttersaltflour.domain.member.entity.Youth;
 import practice.buttersaltflour.domain.member.exception.MemberException;
-import practice.buttersaltflour.domain.member.repository.MemberRepository;
+import practice.buttersaltflour.domain.member.repository.YouthRepository;
 import util.execption.ErrorCode;
 
 import java.util.Optional;
@@ -24,7 +24,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Transactional
 public class AuthService {
-    private final MemberRepository repository;
+    private final YouthRepository repository;
 
     public String saveIfNew() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

@@ -14,15 +14,15 @@ import practice.buttersaltflour.auth.model.CustomPrincipal;
 import practice.buttersaltflour.auth.service.AuthService;
 import practice.buttersaltflour.domain.member.controller.dto.MemberResponse;
 import practice.buttersaltflour.domain.member.controller.dto.UpdateMemberRequest;
-import practice.buttersaltflour.domain.member.service.MemberService;
+import practice.buttersaltflour.domain.member.service.YouthService;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
 @Tag(name = "MEMBER 정보", description = "member request API")
-public class MemberController {
+public class YouthController {
 
-    private final MemberService service;
+    private final YouthService service;
     private final AuthService authService;
 
 

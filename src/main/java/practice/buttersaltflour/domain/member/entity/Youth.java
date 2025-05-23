@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import practice.buttersaltflour.domain.badge.entity.Badge;
 import practice.buttersaltflour.domain.member.entity.enumList.Gender;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -31,6 +32,9 @@ public class Youth {
 
     private String profileImage;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "badge_id")
+    private Badge badge;
 
     @Builder
     public Youth(String name, Gender gender, String phoneNumber, String address, int age, String profileImage) {

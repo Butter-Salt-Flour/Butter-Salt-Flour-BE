@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import practice.buttersaltflour.auth.model.CustomPrincipal;
 import practice.buttersaltflour.auth.service.AuthService;
-import practice.buttersaltflour.domain.member.service.MemberService;
+import practice.buttersaltflour.domain.member.service.YouthService;
 
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "소셜로그인", description = "Auth request API")
 public class AuthController {
     private final AuthService service;
-    private final MemberService memberService;
+    private final YouthService memberService;
 
     @Operation(summary = "소셜 로그인 요청")
     @ApiResponse(responseCode = "200", description = "회원가입 성공",
