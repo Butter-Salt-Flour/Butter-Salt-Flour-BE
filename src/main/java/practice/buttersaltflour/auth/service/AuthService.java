@@ -1,17 +1,21 @@
 package practice.buttersaltflour.auth.service;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import practice.buttersaltflour.auth.entity.CustomPrincipal;
+import practice.buttersaltflour.auth.model.CustomPrincipal;
+import practice.buttersaltflour.auth.exception.AuthContextMissingException;
+import practice.buttersaltflour.auth.exception.InvalidTokenTypeException;
+import practice.buttersaltflour.auth.exception.MissingUidException;
 import practice.buttersaltflour.member.entity.Member;
-import practice.buttersaltflour.member.exception.AuthContextMissingException;
-import practice.buttersaltflour.member.exception.InvalidTokenTypeException;
-import practice.buttersaltflour.member.exception.MissingUidException;
+import practice.buttersaltflour.member.exception.MemberException;
 import practice.buttersaltflour.member.repository.MemberRepository;
+import util.execption.ErrorCode;
 
 import java.util.Optional;
 
@@ -53,5 +57,14 @@ public class AuthService {
         }
 
         return "login success: " + email;
+    }
+
+    public void deleteFirebaseMember(String uid) {
+        try {
+            FirebaseAuth.getInstance().deleteUser(uid);
+            log.info("Firebase member 삭제 완료");
+        } catch (FirebaseAuthException e) {
+            throw new MemberException(ErrorCode.FIREBASE_DELETE_FAIL);
+        }
     }
 }

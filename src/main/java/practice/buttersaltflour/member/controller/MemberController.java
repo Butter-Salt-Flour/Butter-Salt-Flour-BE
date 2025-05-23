@@ -10,8 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-import practice.buttersaltflour.auth.entity.CustomPrincipal;
-import practice.buttersaltflour.domain.gemini.controller.dto.GeminiResponse;
+import practice.buttersaltflour.auth.model.CustomPrincipal;
+import practice.buttersaltflour.auth.service.AuthService;
 import practice.buttersaltflour.member.controller.dto.MemberResponse;
 import practice.buttersaltflour.member.controller.dto.UpdateMemberRequest;
 import practice.buttersaltflour.member.service.MemberService;
@@ -23,6 +23,9 @@ import practice.buttersaltflour.member.service.MemberService;
 public class MemberController {
 
     private final MemberService service;
+    private final AuthService authService;
+
+
 
     @Operation(summary = "본인 정보 요청 API")
     @ApiResponse(responseCode = "200", description = "로그인한 본인 정보 조회 성공",
@@ -46,4 +49,6 @@ public class MemberController {
         MemberResponse member = service.updateByUid(uid, request);
         return ResponseEntity.ok(member);
     }
+
+
 }

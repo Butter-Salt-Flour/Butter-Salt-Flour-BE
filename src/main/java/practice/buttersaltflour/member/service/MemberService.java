@@ -2,20 +2,14 @@ package practice.buttersaltflour.member.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import practice.buttersaltflour.auth.entity.CustomPrincipal;
 import practice.buttersaltflour.member.controller.dto.MemberResponse;
 import practice.buttersaltflour.member.controller.dto.UpdateMemberRequest;
 import practice.buttersaltflour.member.entity.Member;
-import practice.buttersaltflour.member.exception.AuthContextMissingException;
-import practice.buttersaltflour.member.exception.InvalidTokenTypeException;
-import practice.buttersaltflour.member.exception.MissingUidException;
+import practice.buttersaltflour.member.exception.MemberException;
 import practice.buttersaltflour.member.repository.MemberRepository;
-
-import java.util.Optional;
+import util.execption.ErrorCode;
 
 @Slf4j
 @Service
@@ -24,48 +18,20 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepository repository;
 
-    public String saveIfNew() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication == null) {
-            throw new AuthContextMissingException();
-        }
-
-        Object principal = authentication.getPrincipal();
-        if (!(principal instanceof CustomPrincipal)) {
-            throw new InvalidTokenTypeException();
-        }
-
-        CustomPrincipal customPrincipal = (CustomPrincipal) principal;
-        String uid = customPrincipal.getUid();
-        String email = customPrincipal.getEmail();
-        String displayName = customPrincipal.getDisplayName();
-
-        if (uid == null || uid.isBlank()) {
-            log.warn("CustomPrincipal에서 UID 없음");
-            throw new MissingUidException();
-        }
-
-        Optional<Member> existing = repository.findByUid(uid);
-        if (existing.isEmpty()) {
-            repository.save(new Member(uid, email, displayName));
-            log.info("신규 회원 저장 완료: {}", uid);
-        } else {
-            log.info("기존 회원 로그인: {}", uid);
-        }
-
-        return "login success: " + email;
-    }
-
     public MemberResponse findByUid(String uid) {
-        Member member = repository.findByUid(uid).orElseThrow(() -> new NullPointerException("오류 발생"));
+        Member member = repository.findByUid(uid).orElseThrow(() -> new MemberException(ErrorCode.MEMBER_NOT_FOUND));
         return MemberResponse.from(member);
     }
 
     public MemberResponse updateByUid(String uid, UpdateMemberRequest request) {
-        Member member = repository.findByUid(uid).orElseThrow(() -> new NullPointerException("오류 발생"));
+        Member member = repository.findByUid(uid).orElseThrow(() -> new MemberException(ErrorCode.MEMBER_NOT_FOUND));
         member.update(request);
         return MemberResponse.from(member);
     }
 
+    public String deleteByUid(String uid) {
+        Member member = repository.findByUid(uid).orElseThrow(() ->  new MemberException(ErrorCode.MEMBER_NOT_FOUND));
+        repository.delete(member);
+        return "delete success: " + member.getDisplayName();
+    }
 }
