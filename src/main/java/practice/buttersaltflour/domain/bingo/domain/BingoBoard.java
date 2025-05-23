@@ -1,4 +1,4 @@
-package practice.buttersaltflour.domain.bingoboard.domain;
+package practice.buttersaltflour.domain.bingo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
@@ -28,10 +28,10 @@ public class BingoBoard {
     private Long id;
 
     @Column(nullable = false)
-    private int level;
+    private BingoBoardLevel level;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "bingoboard", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "bingoBoard", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Quest> quests = new ArrayList<>();
 
     @JsonIgnore

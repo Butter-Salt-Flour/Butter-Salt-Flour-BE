@@ -1,4 +1,4 @@
-package practice.buttersaltflour.domain.bingoboard.domain;
+package practice.buttersaltflour.domain.bingo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
@@ -31,6 +31,12 @@ public class Quest {
 
     @Column(nullable = false)
     private boolean completed;
+
+    @Column(nullable = false)
+    private int row;
+
+    @Column(nullable = false)
+    private int column;
 
     private LocalDateTime completedAt;
 

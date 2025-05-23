@@ -2,7 +2,7 @@ package practice.buttersaltflour.domain.member.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import practice.buttersaltflour.domain.bingoboard.domain.BingoBoard;
+import practice.buttersaltflour.domain.bingo.domain.BingoBoard;
 import practice.buttersaltflour.domain.member.entity.enumList.MatchStatus;
 
 import java.time.LocalDateTime;
