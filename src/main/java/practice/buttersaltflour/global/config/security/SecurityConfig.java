@@ -19,13 +19,19 @@ public class SecurityConfig {
         return http
                 .cors(cors -> cors.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
-                    config.setAllowedOrigins(List.of(
-                            "http://localhost:3000",
-                            "https://butter-salt-flour-fe.vercel.app"
-                    ));
+
+                    // ✅ 모든 Origin 허용 (Spring Security 6.1 이상)
+                    config.setAllowedOriginPatterns(List.of("*"));
+
+                    // ✅ 모든 HTTP 메서드 허용
                     config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-                    config.setAllowedHeaders(List.of("*")); // 또는 List.of("Authorization", "Content-Type", ...)
-                    config.setAllowCredentials(true); // 인증정보 포함 허용
+
+                    // ✅ 모든 헤더 허용
+                    config.setAllowedHeaders(List.of("*"));
+
+                    // ✅ 인증정보(Cookie, Authorization) 포함 요청 허용
+                    config.setAllowCredentials(true);
+
                     return config;
                 }))
                 .csrf(AbstractHttpConfigurer::disable)
