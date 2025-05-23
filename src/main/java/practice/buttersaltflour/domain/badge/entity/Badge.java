@@ -2,19 +2,21 @@ package practice.buttersaltflour.domain.badge.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import practice.buttersaltflour.domain.member.Youth.Youth;
+import practice.buttersaltflour.domain.member.Youth.YouthBadge;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+import java.util.ArrayList;
+
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Badge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "badge_id")
-    private Long id;
+    private Long badgeId;
 
     @Column(nullable = false)
     private String title;
@@ -25,7 +27,13 @@ public class Badge {
     @Column(nullable = false)
     private String imageUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "youth_id")
-    private Youth youth;
+    @OneToMany(mappedBy = "badge", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ArrayList<YouthBadge> youthBadges = new ArrayList<>();
+
+    @Builder
+    public Badge(String title, String description, String imageUrl) {
+        this.title = title;
+        this.description = description;
+        this.imageUrl = imageUrl;
+    }
 }

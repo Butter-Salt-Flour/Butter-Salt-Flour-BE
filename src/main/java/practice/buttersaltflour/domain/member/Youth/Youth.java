@@ -11,13 +11,13 @@ import practice.buttersaltflour.domain.member.enumList.Gender;
 
 import java.util.ArrayList;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Youth {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "youth_id")
     private Long youthId;
 
     private String uid;
@@ -34,16 +34,19 @@ public class Youth {
     private String profileImage;
 
     @OneToMany(mappedBy = "youth", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<Badge> badges = new ArrayList<>();
+    private ArrayList<YouthBadge> youthBadges = new ArrayList<>();
 
     @Builder
-    public Youth(String name, Gender gender, String phoneNumber, int age, String profileImage) {
+    public Youth(String uid, String name, Gender gender, String phoneNumber, int age, String profileImage) {
+        this.uid = uid;
         this.name = name;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.age = age;
         this.profileImage = profileImage;
     }
+
+
 
     public Youth(String uid, String profileImage) {
         this.uid = uid;
@@ -56,4 +59,5 @@ public class Youth {
         this.phoneNumber = youthRequest.getPhoneNumber();
         this.age = youthRequest.getAge();
     }
+
 }
