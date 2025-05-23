@@ -27,6 +27,10 @@ public class Senior {
 
     private String address;
 
+    private Double latitude;
+
+    private Double longitude;
+
     private Integer age;
 
     private String profileImage;
