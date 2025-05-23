@@ -17,7 +17,7 @@ import java.util.List;
 public class BingoBoard {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bingoboard_id")
     private Long id;
 
