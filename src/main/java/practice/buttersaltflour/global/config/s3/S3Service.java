@@ -26,12 +26,11 @@ public class S3Service {
     @Value("${cloud.aws.region.static}")
     private String region;
 
-    public String uploadToProfileImageFolder(String email, MultipartFile file) {
-        String safeEmail = email.replaceAll("[^a-zA-Z0-9]", "_");
+    public String uploadToProfileImageFolder(MultipartFile file) {
         String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss"));
 
 
-        String uniqueFileName = "bingoImage/" + safeEmail + "_" + currentTime;
+        String uniqueFileName = "bingoImage/" + "_" + currentTime;
 
 
         try {
