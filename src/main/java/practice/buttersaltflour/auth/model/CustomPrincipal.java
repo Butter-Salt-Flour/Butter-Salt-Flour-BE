@@ -1,4 +1,4 @@
-package practice.buttersaltflour.auth.entity;
+package practice.buttersaltflour.auth.model;
 
 import lombok.Getter;
 

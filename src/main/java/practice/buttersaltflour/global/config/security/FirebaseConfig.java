@@ -1,4 +1,4 @@
-package practice.buttersaltflour.global.config.login;
+package practice.buttersaltflour.global.config.security;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;

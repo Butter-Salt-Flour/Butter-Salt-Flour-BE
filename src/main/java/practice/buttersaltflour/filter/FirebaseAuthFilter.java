@@ -15,9 +15,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 import practice.buttersaltflour.filter.exception.FirebaseAuthFailureException;
-import practice.buttersaltflour.filter.exception.FirebaseAuthHeaderMissingException;
-import practice.buttersaltflour.filter.exception.FirebaseAuthInvalidFormatException;
-import practice.buttersaltflour.auth.entity.CustomPrincipal;
+import practice.buttersaltflour.auth.model.CustomPrincipal;
 
 import java.io.IOException;
 import java.util.List;

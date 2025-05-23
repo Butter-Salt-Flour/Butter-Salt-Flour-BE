@@ -1,12 +1,16 @@
 package practice.buttersaltflour.member.controller.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import practice.buttersaltflour.member.entity.Member;
 
 @Getter
 public class MemberResponse {
-    private String email;
-    private String displayName;
+    @Schema(description = "회원 이메일", example = "user@example.com")
+    private final String email;
+
+    @Schema(description = "회원 표시 이름", example = "홍길동")
+    private final String displayName;
 
     public MemberResponse(String email, String displayName) {
         this.email = email;
