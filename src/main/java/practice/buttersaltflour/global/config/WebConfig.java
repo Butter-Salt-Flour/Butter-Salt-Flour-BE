@@ -13,7 +13,8 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000") // 프론트 주소(배포한다면, https 통신위해 바꿔야 함.)
+                        .allowedOrigins("http://localhost:3000")
+                        .allowedOrigins("https://butter-salt-flour-fe.vercel.app/")// 프론트 주소(배포한다면, https 통신위해 바꿔야 함.)
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*")
                         .allowCredentials(true);
