@@ -1,12 +1,10 @@
 package practice.buttersaltflour.domain.badge.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import practice.buttersaltflour.domain.member.Youth.Youth;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -14,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Badge {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "badge_id")
     private Long id;
 
@@ -27,4 +25,7 @@ public class Badge {
     @Column(nullable = false)
     private String imageUrl;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "youth_id")
+    private Youth youth;
 }

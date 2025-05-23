@@ -9,6 +9,8 @@ import practice.buttersaltflour.domain.badge.entity.Badge;
 import practice.buttersaltflour.domain.member.Youth.DTO.YouthRequest;
 import practice.buttersaltflour.domain.member.enumList.Gender;
 
+import java.util.ArrayList;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
@@ -31,9 +33,8 @@ public class Youth {
 
     private String profileImage;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "badge_id")
-    private Badge badge;
+    @OneToMany(mappedBy = "youth", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ArrayList<Badge> badges = new ArrayList<>();
 
     @Builder
     public Youth(String name, Gender gender, String phoneNumber, int age, String profileImage) {

@@ -45,4 +45,10 @@ public class YouthController {
         return ResponseEntity.ok(youth);
     }
 
+    public ResponseEntity<Youth> giveBadge(@AuthenticationPrincipal CustomPrincipal customPrincipal,
+                                           @RequestBody BadgeRequest request) {
+        String uid = customPrincipal.getUid();
+        service.giveBadge(uid);
+    }
+
 }
