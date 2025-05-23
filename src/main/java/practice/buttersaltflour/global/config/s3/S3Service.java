@@ -1,0 +1,63 @@
+package practice.buttersaltflour.global.config.s3;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import software.amazon.awssdk.services.s3.S3Client;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import org.springframework.web.multipart.MultipartFile;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
+
+
+@Component
+@RequiredArgsConstructor
+public class S3Service {
+
+    private final S3Client s3Client;
+
+    @Value("${cloud.aws.s3.bucket}")
+    private String bucketName;
+
+    @Value("${cloud.aws.region.static}")
+    private String region;
+
+    public String uploadToProfileImageFolder(String email, MultipartFile file) {
+        String safeEmail = email.replaceAll("[^a-zA-Z0-9]", "_");
+        String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss"));
+
+
+        String uniqueFileName = "bingoImage/" + safeEmail + "_" + currentTime;
+
+
+        try {
+            String tempFileName = uniqueFileName.replace("/", "_");
+            Path tempFile = Files.createTempFile("temp-", tempFileName);
+
+            Files.copy(file.getInputStream(), tempFile, StandardCopyOption.REPLACE_EXISTING);
+
+            s3Client.putObject(
+                    PutObjectRequest.builder()
+                            .bucket(bucketName)
+                            .key(uniqueFileName)
+                            .contentType(file.getContentType())
+                            .build(),
+                    tempFile
+            );
+
+            return generateFileUrl(uniqueFileName);
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException("S3 파일 업로드 실패");
+        }
+    }
+
+    private String generateFileUrl(String uniqueFileName) {
+        return "https://" + bucketName + ".s3." + region + ".amazonaws.com/" + uniqueFileName;
+    }
+
+}
