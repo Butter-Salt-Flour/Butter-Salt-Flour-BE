@@ -35,7 +35,6 @@ public class BingoBoard {
     private List<Quest> quests = new ArrayList<>();
 
     @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "matched_id", nullable = false, unique = true)
-    private Matching matching;
+    @OneToMany(mappedBy = "bingoBoard", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Matching> matchings = new ArrayList<>();
 }
