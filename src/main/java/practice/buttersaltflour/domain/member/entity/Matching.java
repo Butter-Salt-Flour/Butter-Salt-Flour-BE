@@ -1,6 +1,8 @@
 package practice.buttersaltflour.domain.member.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import practice.buttersaltflour.domain.bingoboard.domain.BingoBoard;
 import practice.buttersaltflour.domain.member.entity.enumList.MatchStatus;
 
 import java.time.LocalDateTime;
@@ -24,4 +26,10 @@ public class Matching {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "youth_id")
     private Youth youth;
+
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bingoboard_id", nullable = false, unique = true)
+    private BingoBoard bingoBoard;
+
 }
