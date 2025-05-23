@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import practice.buttersaltflour.auth.entity.CustomPrincipal;
 import practice.buttersaltflour.member.controller.dto.MemberResponse;
+import practice.buttersaltflour.member.controller.dto.UpdateMemberRequest;
 import practice.buttersaltflour.member.entity.Member;
 import practice.buttersaltflour.member.exception.AuthContextMissingException;
 import practice.buttersaltflour.member.exception.InvalidTokenTypeException;
@@ -60,4 +61,11 @@ public class MemberService {
         Member member = repository.findByUid(uid).orElseThrow(() -> new NullPointerException("오류 발생"));
         return MemberResponse.from(member);
     }
+
+    public MemberResponse updateByUid(String uid, UpdateMemberRequest request) {
+        Member member = repository.findByUid(uid).orElseThrow(() -> new NullPointerException("오류 발생"));
+        member.update(request);
+        return MemberResponse.from(member);
+    }
+
 }

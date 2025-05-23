@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import practice.buttersaltflour.member.controller.dto.UpdateMemberRequest;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -24,5 +25,10 @@ public class Member {
         this.uid = uid;
         this.email = email;
         this.displayName = displayName;
+    }
+
+    public void update(UpdateMemberRequest request) {
+        this.email = request.getEmail();
+        this.displayName = request.getDisplayName();
     }
 }
