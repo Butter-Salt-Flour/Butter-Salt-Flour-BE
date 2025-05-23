@@ -1,10 +1,9 @@
-package practice.buttersaltflour.member.repository;
+package practice.buttersaltflour.domain.member.Matching;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import practice.buttersaltflour.domain.member.entity.Matching;
-import practice.buttersaltflour.domain.member.entity.Youth;
-import practice.buttersaltflour.domain.member.entity.enumList.MatchStatus;
+import practice.buttersaltflour.domain.member.Youth.Youth;
+import practice.buttersaltflour.domain.member.enumList.MatchStatus;
 
 import java.util.List;
 

@@ -1,10 +1,8 @@
-package practice.buttersaltflour.member.service;
+package practice.buttersaltflour.domain.member.Senior;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import practice.buttersaltflour.domain.member.entity.Senior;
-import practice.buttersaltflour.member.controller.dto.SeniorResponseDto;
-import practice.buttersaltflour.member.repository.SeniorRepository;
+import practice.buttersaltflour.domain.member.Senior.DTO.SeniorResponseDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

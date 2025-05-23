@@ -1,17 +1,15 @@
-package practice.buttersaltflour.member.service;
+package practice.buttersaltflour.domain.member.Matching;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import practice.buttersaltflour.domain.member.entity.Matching;
-import practice.buttersaltflour.domain.member.entity.Senior;
-import practice.buttersaltflour.domain.member.entity.Youth;
-import practice.buttersaltflour.domain.member.entity.enumList.MatchStatus;
-import practice.buttersaltflour.domain.member.repository.YouthRepository;
-import practice.buttersaltflour.member.controller.dto.MatchingRequestDto;
-import practice.buttersaltflour.member.controller.dto.MatchingResponseDto;
-import practice.buttersaltflour.member.repository.MatchingRepository;
-import practice.buttersaltflour.member.repository.SeniorRepository;
+import practice.buttersaltflour.domain.member.Senior.Senior;
+import practice.buttersaltflour.domain.member.Youth.Youth;
+import practice.buttersaltflour.domain.member.enumList.MatchStatus;
+import practice.buttersaltflour.domain.member.Youth.YouthRepository;
+import practice.buttersaltflour.domain.member.Matching.DTO.MatchingRequestDto;
+import practice.buttersaltflour.domain.member.Matching.DTO.MatchingResponseDto;
+import practice.buttersaltflour.domain.member.Senior.SeniorRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

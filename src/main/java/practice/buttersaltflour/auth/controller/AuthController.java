@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import practice.buttersaltflour.auth.model.CustomPrincipal;
 import practice.buttersaltflour.auth.service.AuthService;
-import practice.buttersaltflour.domain.member.service.YouthService;
+import practice.buttersaltflour.domain.member.Youth.YouthService;
 
 @RestController
 @RequiredArgsConstructor

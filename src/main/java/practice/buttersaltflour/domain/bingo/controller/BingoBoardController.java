@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import practice.buttersaltflour.auth.model.CustomPrincipal;
 import practice.buttersaltflour.domain.bingo.controller.response.BingoBoardResponse;
 import practice.buttersaltflour.domain.bingo.service.BingoBoardService;
-import practice.buttersaltflour.domain.member.entity.Matching;
-import practice.buttersaltflour.domain.member.entity.Youth;
-import practice.buttersaltflour.domain.member.service.YouthService;
-import practice.buttersaltflour.member.service.MatchingService;
+import practice.buttersaltflour.domain.member.Matching.Matching;
+import practice.buttersaltflour.domain.member.Matching.MatchingService;
+import practice.buttersaltflour.domain.member.Youth.Youth;
+import practice.buttersaltflour.domain.member.Youth.YouthService;
 
 @RestController
 @RequiredArgsConstructor

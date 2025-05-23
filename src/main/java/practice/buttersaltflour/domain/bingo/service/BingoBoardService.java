@@ -6,7 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import practice.buttersaltflour.domain.bingo.controller.response.BingoBoardResponse;
 import practice.buttersaltflour.domain.bingo.domain.BingoBoard;
 import practice.buttersaltflour.domain.bingo.repository.BingoBoardRepository;
-import practice.buttersaltflour.domain.member.entity.Matching;
+import practice.buttersaltflour.domain.member.Matching.Matching;
+
 
 @Service
 @RequiredArgsConstructor

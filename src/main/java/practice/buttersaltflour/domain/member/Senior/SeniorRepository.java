@@ -1,7 +1,6 @@
-package practice.buttersaltflour.member.repository;
+package practice.buttersaltflour.domain.member.Senior;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import practice.buttersaltflour.domain.member.entity.Senior;
 
 public interface SeniorRepository extends JpaRepository<Senior, Long> {
 }
