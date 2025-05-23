@@ -2,6 +2,7 @@ package practice.buttersaltflour.domain.member.Senior;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import practice.buttersaltflour.domain.member.Senior.DTO.SeniorResponseDto;
 
 import java.util.List;
@@ -9,10 +10,11 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class SeniorService {
 
     private final SeniorRepository seniorRepository;
-
+    @Transactional(readOnly = true)
     public List<SeniorResponseDto> getAllSeniors() {
         List<Senior> seniors = seniorRepository.findAll();
 

@@ -5,17 +5,19 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import practice.buttersaltflour.domain.badge.entity.Badge;
 import practice.buttersaltflour.domain.member.Youth.DTO.YouthRequest;
 import practice.buttersaltflour.domain.member.enumList.Gender;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Youth {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "youth_id")
     private Long youthId;
 
     private String uid;
@@ -31,18 +33,20 @@ public class Youth {
 
     private String profileImage;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "badge_id")
-    private Badge badge;
+    @OneToMany(mappedBy = "youth", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<YouthBadge> youthBadges = new ArrayList<>();
 
     @Builder
-    public Youth(String name, Gender gender, String phoneNumber, int age, String profileImage) {
+    public Youth(String uid, String name, Gender gender, String phoneNumber, int age, String profileImage) {
+        this.uid = uid;
         this.name = name;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.age = age;
         this.profileImage = profileImage;
     }
+
+
 
     public Youth(String uid, String profileImage) {
         this.uid = uid;
@@ -55,4 +59,5 @@ public class Youth {
         this.phoneNumber = youthRequest.getPhoneNumber();
         this.age = youthRequest.getAge();
     }
+
 }

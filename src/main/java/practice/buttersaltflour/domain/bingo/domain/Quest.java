@@ -1,15 +1,12 @@
 package practice.buttersaltflour.domain.bingo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
 import java.util.Optional;
@@ -33,14 +30,17 @@ public class Quest {
     @Enumerated(EnumType.STRING)
     private MissionType level;
 
+    @Setter
     @Column(nullable = false)
     private boolean completed;
 
     @Column(nullable = false)
     private int questOrder;
 
+    @Setter
     private LocalDateTime completedAt;
 
+    @Setter
     private String imageUrl;
 
     @JsonIgnore
