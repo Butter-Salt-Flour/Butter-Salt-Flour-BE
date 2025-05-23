@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import practice.buttersaltflour.auth.model.CustomPrincipal;
-import practice.buttersaltflour.domain.member.controller.dto.LocationUpdateRequest;
 import practice.buttersaltflour.domain.member.controller.dto.YouthRequest;
 import practice.buttersaltflour.domain.member.controller.dto.YouthResponse;
 import practice.buttersaltflour.domain.member.entity.Youth;
@@ -41,14 +40,6 @@ public class YouthController {
                                            @RequestBody YouthRequest youthRequest) {
         String youthUid = customPrincipal.getUid();
         Youth youth = service.save(youthUid, youthRequest);
-        return ResponseEntity.ok(youth);
-    }
-
-    @PatchMapping("/youth-location")
-    public ResponseEntity<Youth> modifyYouthLocation(@AuthenticationPrincipal CustomPrincipal customPrincipal,
-                                                     @RequestBody LocationUpdateRequest request) {
-        String uid = customPrincipal.getUid();
-        Youth youth = service.modifyLocation(uid, request);
         return ResponseEntity.ok(youth);
     }
 

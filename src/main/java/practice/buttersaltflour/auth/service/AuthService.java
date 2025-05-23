@@ -40,6 +40,7 @@ public class AuthService {
 
         CustomPrincipal customPrincipal = (CustomPrincipal) principal;
         String uid = customPrincipal.getUid();
+        String profileImage = customPrincipal.getPicture();
 
         if (uid == null || uid.isBlank()) {
             log.warn("CustomPrincipal에서 UID 없음");
@@ -48,7 +49,7 @@ public class AuthService {
 
         Optional<Youth> existing = repository.findByUid(uid);
         if (existing.isEmpty()) {
-            repository.save(new Youth(uid));
+            repository.save(new Youth(uid,profileImage));
             log.info("신규 회원 저장 완료: {}", uid);
         } else {
             log.info("기존 회원 로그인: {}", uid);

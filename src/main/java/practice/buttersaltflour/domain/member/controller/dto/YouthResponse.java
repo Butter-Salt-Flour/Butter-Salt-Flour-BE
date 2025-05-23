@@ -17,23 +17,17 @@ public class YouthResponse {
 
     private final String phoneNumber;
 
-    private final double latitude;
-
-    private final double longitude;
-
     private final int age;
 
     private final String profileImage;
 
     @Builder
-    public YouthResponse(Long youthId, String uid, String name, Gender gender, String phoneNumber, double latitude, double longitude, int age, String profileImage) {
+    public YouthResponse(Long youthId, String uid, String name, Gender gender, String phoneNumber, int age, String profileImage) {
         this.youthId = youthId;
         this.uid = uid;
         this.name = name;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.age = age;
         this.profileImage = profileImage;
     }
@@ -45,8 +39,6 @@ public class YouthResponse {
                 .name(youth.getName())
                 .gender(youth.getGender())
                 .phoneNumber(youth.getPhoneNumber())
-                .latitude(youth.getLatitude())
-                .longitude(youth.getLongitude())
                 .age(youth.getAge())
                 .profileImage(youth.getProfileImage())
                 .build();

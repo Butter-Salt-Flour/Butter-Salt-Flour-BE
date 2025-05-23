@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import practice.buttersaltflour.domain.badge.entity.Badge;
+import practice.buttersaltflour.domain.member.controller.dto.YouthRequest;
 import practice.buttersaltflour.domain.member.entity.enumList.Gender;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -26,8 +27,6 @@ public class Youth {
 
     private String phoneNumber;
 
-    private String address;
-
     private int age;
 
     private String profileImage;
@@ -37,17 +36,25 @@ public class Youth {
     private Badge badge;
 
     @Builder
-    public Youth(String name, Gender gender, String phoneNumber, String address, int age, String profileImage) {
+    public Youth(String name, Gender gender, String phoneNumber, int age, String profileImage, Badge badge) {
         this.name = name;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
-        this.address = address;
         this.age = age;
+        this.profileImage = profileImage;
+        this.badge = badge;
+    }
+
+
+    public Youth(String uid, String profileImage) {
+        this.uid = uid;
         this.profileImage = profileImage;
     }
 
-    public Youth(String uid) {
-        this.uid = uid;
+    public void resister(YouthRequest youthRequest) {
+        this.name = youthRequest.getName();
+        this.gender = youthRequest.getGender();
+        this.phoneNumber = youthRequest.getPhoneNumber();
+        this.age = youthRequest.getAge();
     }
-
 }

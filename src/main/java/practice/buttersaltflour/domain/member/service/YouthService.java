@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import practice.buttersaltflour.domain.member.controller.dto.LocationUpdateRequest;
 import practice.buttersaltflour.domain.member.controller.dto.YouthRequest;
 import practice.buttersaltflour.domain.member.controller.dto.YouthResponse;
 import practice.buttersaltflour.domain.member.entity.Youth;
@@ -37,9 +36,4 @@ public class YouthService {
         return youth;
     }
 
-    public Youth modifyLocation(String youthUid, LocationUpdateRequest request) {
-        Youth youth = repository.findByUid(youthUid).orElseThrow(() -> new MemberException(ErrorCode.MEMBER_NOT_FOUND));
-        youth.modifyLocation(request);
-        return youth;
-    }
 }

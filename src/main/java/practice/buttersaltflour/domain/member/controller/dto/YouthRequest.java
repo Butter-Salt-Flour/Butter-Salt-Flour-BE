@@ -26,8 +26,6 @@ public class YouthRequest {
                 .name(name)
                 .gender(gender)
                 .phoneNumber(phoneNumber)
-                .latitude(latitude)
-                .longitude(longitude)
                 .age(age)
                 .profileImage(profileImage)
                 .build();
