@@ -1,7 +1,6 @@
 package practice.buttersaltflour.domain.member.controller.dto;
 
 import practice.buttersaltflour.domain.member.entity.Youth;
-import practice.buttersaltflour.domain.member.entity.Gender;
 
 public class YouthRequest {
 
