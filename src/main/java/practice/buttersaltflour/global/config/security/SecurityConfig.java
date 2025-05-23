@@ -18,6 +18,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/**").permitAll()
+                        .requestMatchers("/api/youth/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new FirebaseAuthFilter(), UsernamePasswordAuthenticationFilter.class)

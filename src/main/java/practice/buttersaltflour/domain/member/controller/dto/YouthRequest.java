@@ -1,8 +1,10 @@
 package practice.buttersaltflour.domain.member.controller.dto;
 
+import lombok.Getter;
 import practice.buttersaltflour.domain.member.entity.Youth;
 import practice.buttersaltflour.domain.member.entity.enumList.Gender;
 
+@Getter
 public class YouthRequest {
 
     private String name;
@@ -11,7 +13,9 @@ public class YouthRequest {
 
     private String phoneNumber;
 
-    private String address;
+    private double latitude;
+
+    private double longitude;
 
     private int age;
 
@@ -22,7 +26,8 @@ public class YouthRequest {
                 .name(name)
                 .gender(gender)
                 .phoneNumber(phoneNumber)
-                .address(address)
+                .latitude(latitude)
+                .longitude(longitude)
                 .age(age)
                 .profileImage(profileImage)
                 .build();

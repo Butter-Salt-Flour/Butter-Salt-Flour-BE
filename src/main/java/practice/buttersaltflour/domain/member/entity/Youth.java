@@ -14,8 +14,8 @@ import practice.buttersaltflour.domain.member.entity.enumList.Gender;
 public class Youth {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_id")
-    private Long id;
+    @Column(name = "youth_id")
+    private Long YouthId;
 
     private String uid;
 
