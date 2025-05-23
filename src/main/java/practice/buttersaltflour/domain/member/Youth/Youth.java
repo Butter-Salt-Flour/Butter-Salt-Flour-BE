@@ -27,8 +27,6 @@ public class Youth {
 
     private String phoneNumber;
 
-    private String address;
-
     private int age;
 
     private String profileImage;
@@ -38,11 +36,10 @@ public class Youth {
     private Badge badge;
 
     @Builder
-    public Youth(String name, Gender gender, String phoneNumber, String address, int age, String profileImage) {
+    public Youth(String name, Gender gender, String phoneNumber, int age, String profileImage) {
         this.name = name;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
-        this.address = address;
         this.age = age;
         this.profileImage = profileImage;
     }
