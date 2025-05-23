@@ -26,7 +26,7 @@ public class YouthController {
     @ApiResponse(responseCode = "200", description = "로그인한 본인 정보 조회 성공",
             content = @Content(schema = @Schema(implementation = YouthResponse.class)))
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/member")
+    @GetMapping("/youth")
     public ResponseEntity<YouthResponse> findMember(@AuthenticationPrincipal CustomPrincipal customPrincipal) {
         String uid = customPrincipal.getUid();
         YouthResponse member = service.findYouth(uid);
