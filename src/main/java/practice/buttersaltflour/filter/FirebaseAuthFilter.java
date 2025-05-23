@@ -48,13 +48,12 @@ public class FirebaseAuthFilter extends OncePerRequestFilter {
         try {
             FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(token);
             String uid = decodedToken.getUid();
-            String email = decodedToken.getEmail();
-            String displayName = decodedToken.getName();
+            String profileImage = decodedToken.getPicture();
 
             log.info(">>> 인증 성공: " + uid);
 
             // ✅ CustomPrincipal 생성
-            CustomPrincipal principal = new CustomPrincipal(uid);
+            CustomPrincipal principal = new CustomPrincipal(uid,profileImage);
 
             // ✅ 권한 설정
             List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_USER"));

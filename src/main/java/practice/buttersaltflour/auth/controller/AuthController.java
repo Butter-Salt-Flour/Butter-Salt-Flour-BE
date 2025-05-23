@@ -34,7 +34,7 @@ public class AuthController {
                             value = "{\"message\": \"login success: abc@gmail.com\"}"
                     )))
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/api/auth/signin")
+    @GetMapping("/api/auth/signup")
     public ResponseEntity<String> protectedEndpoint() {
         String resultMessage = service.saveIfNew(); // 비즈니스 로직 위임
         return ResponseEntity.ok(resultMessage);
