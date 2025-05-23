@@ -5,6 +5,6 @@ import practice.buttersaltflour.domain.member.entity.Youth;
 
 import java.util.Optional;
 
-public interface YouthRepository extends JpaRepository<Youth, String> {
+public interface YouthRepository extends JpaRepository<Youth, Long> {
     Optional<Youth> findByUid(String uid);
 }

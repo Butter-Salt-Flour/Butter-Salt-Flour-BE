@@ -2,18 +2,24 @@ package practice.buttersaltflour.domain.member.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.*;
 import practice.buttersaltflour.domain.bingoboard.domain.BingoBoard;
 import practice.buttersaltflour.domain.member.entity.enumList.MatchStatus;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Matching {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "matched_id")
     private Long matchId;
 
+    @Setter
     @Enumerated(EnumType.STRING)
     private MatchStatus isMatched;
 

@@ -2,8 +2,8 @@ package practice.buttersaltflour.member.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import practice.buttersaltflour.domain.member.entity.Senior;
 import practice.buttersaltflour.member.controller.dto.SeniorResponseDto;
-import practice.buttersaltflour.member.entity.Senior;
 import practice.buttersaltflour.member.repository.SeniorRepository;
 
 import java.util.List;
@@ -29,6 +29,8 @@ public class SeniorService {
                 .name(senior.getName())
                 .age(senior.getAge())
                 .address(senior.getAddress())
+                .latitude(senior.getLatitude())
+                .longitude(senior.getLongitude())
                 .description(senior.getDescription())
                 .profileImage(senior.getProfileImage())
                 .build();
