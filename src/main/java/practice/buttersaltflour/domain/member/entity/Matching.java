@@ -1,7 +1,7 @@
-package practice.buttersaltflour.member.entity;
+package practice.buttersaltflour.domain.member.entity;
 
 import jakarta.persistence.*;
-import practice.buttersaltflour.member.entity.enumList.MatchStatus;
+import practice.buttersaltflour.domain.member.entity.enumList.MatchStatus;
 
 import java.time.LocalDateTime;
 
