@@ -31,7 +31,7 @@ public class AuthController {
                     examples = @ExampleObject(
                             name = "LoginSuccess",
                             summary = "정상 로그인 응답",
-                            value = "{\"message\": \"login success: abc@gmail.com\"}"
+                            value = "{\"message\": \"login success: fdklasfnldsfoqeoj\"}"
                     )))
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/api/auth/signup")
