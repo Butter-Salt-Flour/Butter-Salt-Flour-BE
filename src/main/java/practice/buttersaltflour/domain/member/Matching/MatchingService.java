@@ -69,4 +69,8 @@ public class MatchingService {
 
         matching.setIsMatched(MatchStatus.APPROVED);
     }
+
+    public Matching findByYouth(Youth member) {
+        return matchingRepository.findByYouth(member);
+    }
 }
