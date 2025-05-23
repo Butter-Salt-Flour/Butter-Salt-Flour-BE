@@ -1,8 +1,8 @@
-package practice.buttersaltflour.member.controller.dto;
+package practice.buttersaltflour.domain.member.controller.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
-import practice.buttersaltflour.member.entity.Member;
+import practice.buttersaltflour.domain.member.entity.Youth;
 
 @Getter
 public class MemberResponse {
@@ -17,7 +17,7 @@ public class MemberResponse {
         this.displayName = displayName;
     }
 
-    public static MemberResponse from(Member member) {
-        return new MemberResponse(member.getEmail(), member.getDisplayName());
+    public static MemberResponse from(Youth member) {
+        return new MemberResponse(member.getName(), member.getName());
     }
 }

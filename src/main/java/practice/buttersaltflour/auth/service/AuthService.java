@@ -12,9 +12,9 @@ import practice.buttersaltflour.auth.model.CustomPrincipal;
 import practice.buttersaltflour.auth.exception.AuthContextMissingException;
 import practice.buttersaltflour.auth.exception.InvalidTokenTypeException;
 import practice.buttersaltflour.auth.exception.MissingUidException;
-import practice.buttersaltflour.member.entity.Member;
-import practice.buttersaltflour.member.exception.MemberException;
-import practice.buttersaltflour.member.repository.MemberRepository;
+import practice.buttersaltflour.domain.member.entity.Youth;
+import practice.buttersaltflour.domain.member.exception.MemberException;
+import practice.buttersaltflour.domain.member.repository.MemberRepository;
 import util.execption.ErrorCode;
 
 import java.util.Optional;
@@ -40,23 +40,21 @@ public class AuthService {
 
         CustomPrincipal customPrincipal = (CustomPrincipal) principal;
         String uid = customPrincipal.getUid();
-        String email = customPrincipal.getEmail();
-        String displayName = customPrincipal.getDisplayName();
 
         if (uid == null || uid.isBlank()) {
             log.warn("CustomPrincipal에서 UID 없음");
             throw new MissingUidException();
         }
 
-        Optional<Member> existing = repository.findByUid(uid);
+        Optional<Youth> existing = repository.findByUid(uid);
         if (existing.isEmpty()) {
-            repository.save(new Member(uid, email, displayName));
+            repository.save(new Youth(uid));
             log.info("신규 회원 저장 완료: {}", uid);
         } else {
             log.info("기존 회원 로그인: {}", uid);
         }
 
-        return "login success: " + email;
+        return "login success: " + uid;
     }
 
     public void deleteFirebaseMember(String uid) {

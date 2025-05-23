@@ -1,4 +1,4 @@
-package practice.buttersaltflour.member.controller;
+package practice.buttersaltflour.domain.member.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -12,9 +12,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import practice.buttersaltflour.auth.model.CustomPrincipal;
 import practice.buttersaltflour.auth.service.AuthService;
-import practice.buttersaltflour.member.controller.dto.MemberResponse;
-import practice.buttersaltflour.member.controller.dto.UpdateMemberRequest;
-import practice.buttersaltflour.member.service.MemberService;
+import practice.buttersaltflour.domain.member.controller.dto.MemberResponse;
+import practice.buttersaltflour.domain.member.controller.dto.UpdateMemberRequest;
+import practice.buttersaltflour.domain.member.service.MemberService;
 
 @RestController
 @RequiredArgsConstructor
