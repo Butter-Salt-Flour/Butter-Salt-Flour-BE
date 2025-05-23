@@ -33,6 +33,10 @@ public class YouthController {
         return ResponseEntity.ok(member);
     }
 
+    @Operation(summary = "정보 등록 API")
+    @ApiResponse(responseCode = "200", description = "로그인한 본인 정보 등록 성공",
+            content = @Content(schema = @Schema(implementation = YouthResponse.class)))
+    @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/youth")
     public ResponseEntity<Youth> saveYouth(@AuthenticationPrincipal CustomPrincipal customPrincipal,
                                            @RequestBody YouthRequest youthRequest) {
