@@ -1,21 +1,22 @@
 package practice.buttersaltflour.domain.member.Matching;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import practice.buttersaltflour.domain.member.Senior.Senior;
-import practice.buttersaltflour.domain.member.Youth.Youth;
-import practice.buttersaltflour.domain.member.enumList.MatchStatus;
-import practice.buttersaltflour.domain.member.Youth.YouthRepository;
+import org.springframework.transaction.annotation.Transactional;
 import practice.buttersaltflour.domain.member.Matching.DTO.MatchingRequestDto;
 import practice.buttersaltflour.domain.member.Matching.DTO.MatchingResponseDto;
+import practice.buttersaltflour.domain.member.Senior.Senior;
 import practice.buttersaltflour.domain.member.Senior.SeniorRepository;
+import practice.buttersaltflour.domain.member.Youth.Youth;
+import practice.buttersaltflour.domain.member.Youth.YouthRepository;
+import practice.buttersaltflour.domain.member.enumList.MatchStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MatchingService {
 
     private final MatchingRepository matchingRepository;
@@ -54,7 +55,7 @@ public class MatchingService {
         return new MatchingResponseDto(matching.getMatchId(), "매칭 요청 완료");
 
     }
-    @Transactional
+
     public void approve (Long matchId) {
         Matching matching = matchingRepository.findById(matchId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 매칭이 존재하지 않습니다."));
@@ -69,7 +70,7 @@ public class MatchingService {
 
         matching.setIsMatched(MatchStatus.APPROVED);
     }
-
+    @Transactional(readOnly = true)
     public Matching findByYouth(Youth member) {
         return matchingRepository.findByYouth(member);
     }

@@ -20,10 +20,12 @@ public class YouthService {
     private final BadgeRepository badgeRepository;
     private final YouthBadgeRepository youthBadgeRepository;
 
+    @Transactional(readOnly = true)
     public YouthResponse findYouth(String uid) {
         Youth member = repository.findByUid(uid).orElseThrow(() -> new MemberException(ErrorCode.MEMBER_NOT_FOUND));
         return YouthResponse.from(member);
     }
+    @Transactional(readOnly = true)
 
     public Youth getByUid(String uid) {
         Youth member = repository.findByUid(uid).orElseThrow(() -> new MemberException(ErrorCode.MEMBER_NOT_FOUND));
